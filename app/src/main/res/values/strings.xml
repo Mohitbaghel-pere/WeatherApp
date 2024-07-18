@@ -1,5 +1,28 @@
 <resources>
     <string name="app_name">WeatherApp</string>
     <string name="weather_app">Weather App</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="do_you_have_an_account">Do you have an Account?</string>
+    <string name="create_account">Create account</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="confirm_password">Confirm Password</string>
     <string name="splash">Splash</string>
+    <string name="loginfragment">LoginFragment</string>
+    <string name="home">Home</string>
+    <string name="historyfragment">HistoryFragment</string>
+    <string name="currentweatherfragment">CurrentWeatherFragment</string>
+    <string name="invalid_email">Invalid email</string>
+    <string name="inncorrect_password">Incorrect email</string>
+    <string name="offline">You are offline. Please check your internet connection.</string>
+    <string name="weather_icon">Weather Icon</string>
+    <string name="pleae_enter_name">please enter name</string>
+    <string name="invalid_email_format">Invalid email format</string>
+    <string name="password_donot_match">Passwords do not match</string>
+    <string name="User_exists">User with this email already exists</string>
+    <string name="registeration_success">Registration successful</string>
+    <string name="registeration_fail">Registration failed</string>
+    <string name="invalid_email_pass">Invalid email and password</string>
 </resources>
