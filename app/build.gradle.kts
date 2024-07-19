@@ -17,8 +17,15 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        buildConfigField ("String", "PASS_CODE", "\"${"passCode"}\"")
+        buildConfigField ("String", "OPEN_WEATHER_API_KEY", "\"${"48a68b91f23e976a9078e42ad0cea974"}\"")
+        buildConfigField("String", "BASE_URL", "\"https://api.openweathermap.org/data/2.5/\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -28,6 +35,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
         }
     }
     compileOptions {
@@ -86,6 +94,11 @@ dependencies {
 
     // Location
     implementation ("com.google.android.gms:play-services-location:18.0.0")
+
+    // SQLCipher for Android
+//    implementation ("net.zetetic:android-database-sqlcipher:5.0.0")
+
+    implementation ("androidx.security:security-crypto:1.1.0-alpha03")
 
     val mockitoVersion = "4.8.0"
     val mockitoKotlinVersion = "4.1.0"

@@ -1,0 +1,97 @@
+<!-- item_weather_history.xml -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="weatherResponse"
+            type="com.system.weatherapp.data.models.WeatherResponse" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+                <TextView
+                    android:id="@+id/text_time_history"
+                    style="@style/WeatherTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{weatherResponse.time}"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="end" />
+
+
+                <TextView
+                    android:id="@+id/text_current_temperature_history"
+                    style="@style/WeatherTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(weatherResponse.tempCelsius) + ` °C`}"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@android:color/black" />
+
+
+            <ImageView
+                android:id="@+id/image_weather_icon_history"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/sun"
+                android:contentDescription="@string/weather_icon" />
+
+
+                <TextView
+                    android:id="@+id/text_city_country_history"
+                    style="@style/WeatherTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{weatherResponse.city + `, ` + weatherResponse.country}"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="end" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/text_sunrise_history"
+                        style="@style/WeatherTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{`Sunrise: ` + weatherResponse.sunriseTime}"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/text_sunset_history"
+                        style="@style/WeatherTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{`Sunset: ` + weatherResponse.sunsetTime}"
+                        android:textSize="14sp"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@android:color/black" />
+
+                </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,25 +1,26 @@
 package com.system.weatherapp.ui.viewmodel
 
-import android.app.Application
 import android.content.Context
-import android.util.Log
-import androidx.lifecycle.AndroidViewModel
+import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.system.weatherapp.R
 import com.system.weatherapp.data.repository.UserRepository
+import com.system.weatherapp.utils.Constants
 import com.system.weatherapp.utils.Utils.Companion.isValidEmail
-import dagger.hilt.android.internal.Contexts.getApplication
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
 
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val sharedPreferences: SharedPreferences
+
 ) : ViewModel() {
 
     sealed class LoginState {
@@ -48,8 +49,8 @@ class LoginViewModel @Inject constructor(
 
         viewModelScope.launch {
             val user = userRepository.getUserbyEmail(email)
-
             if (user != null && user.password == password) {
+                sharedPreferences.edit().putString(Constants.name, user!!.name ).apply()
                 _loginState.value = LoginState.Success
             } else {
                 _loginState.value = LoginState.Error(R.string.invalid_email_pass)

@@ -56,7 +56,7 @@ class RegisterFragment : Fragment() {
                     is Result.ERROR -> {
                         progressBar.visibility = View.GONE
                         registerButton.isEnabled = true
-                        Toast.makeText(context, resources.getString(state.message), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, state.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             })

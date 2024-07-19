@@ -5,14 +5,16 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.system.weatherapp.data.db.dao.UserDao
+import com.system.weatherapp.data.db.dao.WeatherDao
 import com.system.weatherapp.data.models.User
+import com.system.weatherapp.data.models.WeatherResponse
 
-@Database(entities = [User::class], version = 1, exportSchema = false)
-abstract  class AppDatabase : RoomDatabase() {
+@Database(entities = [WeatherResponse::class, User:: class], version = 2, exportSchema = false)
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun weatherDao(): WeatherDao
     abstract fun userDao(): UserDao
 
-    companion object{
-
+    companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
@@ -21,12 +23,13 @@ abstract  class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "user_database"
-                ).build()
+                    "weather_database"
+                ).fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 instance
             }
         }
     }
-
 }
+

@@ -1,5 +1,6 @@
 package com.system.weatherapp.ui.auth
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,9 @@ import androidx.navigation.fragment.findNavController
 import com.system.weatherapp.R
 import com.system.weatherapp.databinding.FragmentLoginBinding
 import com.system.weatherapp.ui.viewmodel.LoginViewModel
+import com.system.weatherapp.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
@@ -19,6 +22,7 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     private val viewModel: LoginViewModel by viewModels()
+    @Inject lateinit var  sharedPreferences : SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,13 +56,15 @@ class LoginFragment : Fragment() {
                     is LoginViewModel.LoginState.Success -> {
                         progressBar.visibility = View.GONE
                         loginButton.isEnabled = true
-                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+
+                        sharedPreferences.edit().putBoolean(Constants.isLogin, true).apply()
+                        findNavController().navigate(R.id.action_loginFragment_to_currentWeatherFragment)
                     }
                     is LoginViewModel.LoginState.Error -> {
                         progressBar.visibility = View.GONE
                         loginButton.isEnabled = true
                         emailEditText.error = resources.getString(state.message)
-                        passwordEditText.error =  resources.getString(state.message)
+                        passwordEditText.error = resources.getString(state.message)
                     }
                     LoginViewModel.LoginState.InvalidEmail -> {
                         emailEditText.error = getString(R.string.invalid_email)

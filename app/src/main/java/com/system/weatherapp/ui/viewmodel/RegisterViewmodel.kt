@@ -10,6 +10,7 @@ import com.system.weatherapp.R
 import com.system.weatherapp.data.models.User
 import com.system.weatherapp.data.repository.UserRepository
 import com.system.weatherapp.ui.apistates.Result
+import com.system.weatherapp.utils.Utils.Companion.isValidLength
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -39,12 +40,16 @@ class RegisterViewModel @Inject constructor(
             return
         }
 
+        if (!isValidLength(password.length)) {
+            _result.value = Result.ERROR(R.string.password_length)
+            return
+        }
+
         viewModelScope.launch {
             try {
 
                 val existingUser = userRepository.getUserbyEmail(email)
                 if (existingUser != null) {
-
                     _result.value = Result.ERROR(R.string.User_exists)
                     return@launch
                 }
