@@ -13,7 +13,7 @@ data class WeatherResponse(
     val time: String,
     val sunriseTime: String,
     val sunsetTime: String,
-    val isDayTime: Boolean
+    val weatherIcon: String
 ) {
 
 }

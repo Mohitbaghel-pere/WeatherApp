@@ -89,7 +89,7 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="16dp"
                 android:layout_gravity="center"
-                app:srcCompat="@{viewModel.weatherIcon}"
+                app:srcCompat="@drawable/sun"
                 android:contentDescription="@string/weather_icon"
                 app:layout_constraintTop_toBottomOf="@id/text_current_temperature"
                 app:layout_constraintStart_toStartOf="parent"
@@ -125,13 +125,26 @@
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.sunset}"
                 android:drawablePadding="10dp"
-                android:drawableStart="@drawable/ic_sunset"
                 android:textSize="16sp"
                 android:layout_marginTop="8dp"
+                app:drawableStartCompat="@drawable/ic_sunset"
                 app:layout_constraintTop_toBottomOf="@id/text_sunrise"
                 app:layout_constraintStart_toStartOf="parent" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:text="@string/logout"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:padding="15dp"
+            app:drawableStartCompat="@drawable/logout"
+            app:layout_constraintBottom_toBottomOf="@+id/content_view"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

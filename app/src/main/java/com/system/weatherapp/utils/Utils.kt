@@ -3,18 +3,16 @@ package com.system.weatherapp.utils
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.util.Patterns
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
-import androidx.lifecycle.LiveData
-import com.system.weatherapp.R
+import java.util.regex.Pattern
 
-class Utils {
+object Utils {
 
-    companion object {
-
+    private val EMAIL_PATTERN =
+            Pattern.compile(
+                "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+            )
         fun isValidEmail(email: String): Boolean {
-            return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+            return email.isNotEmpty() && EMAIL_PATTERN.matcher(email).matches()
         }
 
         fun isNetworkAvailable(context : Context): Boolean {
@@ -26,22 +24,9 @@ class Utils {
 
         }
 
-        // add password validations length
 
         fun isValidLength(length: Int): Boolean {
             return length >= 4
         }
 
-
-
     }
-}
-
-
-@BindingAdapter("srcCompat")
-fun setImageResource(view: ImageView, resourceId: LiveData<Int>?) {
-    resourceId?.let {
-        view.setImageResource(it.value ?: R.drawable.sun) // Use a default image if resourceId is null
-    }
-}
-

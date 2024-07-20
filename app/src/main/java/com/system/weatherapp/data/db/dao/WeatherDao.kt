@@ -18,4 +18,7 @@ interface WeatherDao {
 
     @Query("SELECT * FROM weather ORDER BY time DESC")
     suspend fun getWeatherHistory(): List<WeatherResponse>
+
+    @Query("DELETE FROM weather")
+    suspend fun deleteAllWeather()
 }

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.system.weatherapp.R
 import com.system.weatherapp.data.models.WeatherResponse
 import com.system.weatherapp.databinding.ItemWeatherHistoryBinding
@@ -28,12 +29,10 @@ class HistoryAdapter : ListAdapter<WeatherResponse, HistoryAdapter.HistoryViewHo
         fun bind(weatherResponse: WeatherResponse) {
             binding.weatherResponse = weatherResponse
             binding.executePendingBindings()
-            val iconDrawable = if (weatherResponse.isDayTime) {
-                R.drawable.sun
-            } else {
-                R.drawable.moon
-            }
-            binding.imageWeatherIconHistory.setImageResource(iconDrawable)
+            Glide.with(binding.root.context)
+                .load(weatherResponse.weatherIcon)
+                .placeholder(R.drawable.sun) // Optional placeholder
+                .into( binding.imageWeatherIconHistory)
         }
     }
 

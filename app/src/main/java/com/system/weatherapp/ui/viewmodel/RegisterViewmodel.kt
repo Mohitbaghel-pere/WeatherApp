@@ -1,7 +1,5 @@
 package com.system.weatherapp.ui.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +8,8 @@ import com.system.weatherapp.R
 import com.system.weatherapp.data.models.User
 import com.system.weatherapp.data.repository.UserRepository
 import com.system.weatherapp.ui.apistates.Result
-import com.system.weatherapp.utils.Utils.Companion.isValidLength
+import com.system.weatherapp.utils.Utils.isValidEmail
+import com.system.weatherapp.utils.Utils.isValidLength
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -62,7 +61,5 @@ class RegisterViewModel @Inject constructor(
         }
     }
 
-    private fun isValidEmail(email: String): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
+
 }

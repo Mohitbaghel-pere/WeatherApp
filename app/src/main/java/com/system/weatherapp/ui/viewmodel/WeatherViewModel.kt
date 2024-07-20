@@ -1,8 +1,8 @@
 package com.system.weatherapp.ui.viewmodel
 
-import android.content.Context
 import android.content.SharedPreferences
 import androidx.lifecycle.*
+import com.bumptech.glide.Glide
 import com.system.weatherapp.R
 import com.system.weatherapp.data.models.WeatherResponse
 import com.system.weatherapp.data.repository.WeatherRepository
@@ -28,7 +28,7 @@ class WeatherViewModel @Inject constructor(
     val time = MutableLiveData<String>()
     val sunrise = MutableLiveData<String>()
     val sunset = MutableLiveData<String>()
-    val weatherIcon = MutableLiveData<Int>()
+    val weatherIcon = MutableLiveData<String>()
 
 
     private val _weatherHistory = MutableLiveData<List<WeatherResponse>>()
@@ -49,18 +49,18 @@ class WeatherViewModel @Inject constructor(
             val weatherResponse = mapApiResponseToEntity((weatherdata))
             weatherRepository.insertWeather(weatherResponse)
 
-            name.value = "Hii, " +sharedPreferences.getString(Constants.name,"")
+            name.value =Constants.hii +sharedPreferences.getString(Constants.name,"")
             cityCountry.value = "${weatherResponse.city}, ${weatherResponse.country}"
             currentTemperature.value = "${weatherResponse.tempCelsius} °C"
             time.value = weatherResponse.time
-            sunrise.value = "Sunrise " + weatherResponse.sunriseTime
-            sunset.value = "Sunset " + weatherResponse.sunsetTime
-            weatherIcon.value = if (weatherResponse.isDayTime)  R.drawable.sun else R.drawable.moon
+            sunrise.value = Constants.sunrise + weatherResponse.sunriseTime
+            sunset.value = Constants.sunset  + weatherResponse.sunsetTime
+            weatherIcon.value = weatherResponse.weatherIcon
 
         }
     }
 
-    private fun fetchWeatherHistory() {
+    fun fetchWeatherHistory() {
         viewModelScope.launch {
             _loading.value = true
             try {
@@ -73,4 +73,20 @@ class WeatherViewModel @Inject constructor(
             }
         }
     }
+
+    fun deleteWeatherTable() {
+        viewModelScope.launch {
+            _loading.value = true
+            try {
+                weatherRepository.deleteAllWeather()
+                _weatherHistory.value = emptyList()
+            } catch (e: Exception) {
+                // Handle error
+            } finally {
+                _loading.value = false
+            }
+        }
+    }
+
+
 }

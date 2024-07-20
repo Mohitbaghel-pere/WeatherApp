@@ -14,6 +14,8 @@ fun mapApiResponseToEntity(apiResponse: WeatherApiData): WeatherResponse {
 
     val currentTime = System.currentTimeMillis()
     val isDayTime = currentTime in (apiResponse.sys.sunrise * 1000)..(apiResponse.sys.sunset * 1000)
+    val weatherIconCode = apiResponse.weather.firstOrNull()?.icon ?: "01d" // Default icon if none is provided
+    val weatherIconUrl = "https://openweathermap.org/img/wn/$weatherIconCode@4x.png"
 
 
     return WeatherResponse(
@@ -24,6 +26,6 @@ fun mapApiResponseToEntity(apiResponse: WeatherApiData): WeatherResponse {
         time = time,
         sunriseTime = sunriseTime,
         sunsetTime = sunsetTime,
-        isDayTime = isDayTime
+        weatherIcon = weatherIconUrl
     )
 }

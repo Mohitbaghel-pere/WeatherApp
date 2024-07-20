@@ -34,7 +34,9 @@
 
         <action
             android:id="@+id/action_loginFragment_to_currentWeatherFragment"
-            app:destination="@id/currentWeatherFragment" />
+            app:destination="@id/currentWeatherFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -53,8 +55,10 @@
         android:label="@string/currentweatherfragment"
         tools:layout="@layout/fragment_current_weather" >
         <action
-            android:id="@+id/action_currentWeatherFragment_to_historyFragment"
-            app:destination="@id/historyFragment" />
+            android:id="@+id/action_currentWeatherFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/currentWeatherFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment

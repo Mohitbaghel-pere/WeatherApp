@@ -2,6 +2,7 @@ package com.system.weatherapp.ui.home
 
 import android.Manifest
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Location
 import android.net.Uri
@@ -14,22 +15,27 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.system.weatherapp.R
 import com.system.weatherapp.databinding.FragmentCurrentWeatherBinding
 import com.system.weatherapp.ui.viewmodel.WeatherViewModel
-import com.system.weatherapp.utils.Utils.Companion.isNetworkAvailable
+import com.system.weatherapp.utils.Utils.isNetworkAvailable
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class CurrentWeatherFragment : Fragment() {
 
     private val weatherViewModel: WeatherViewModel by viewModels()
     private var _binding: FragmentCurrentWeatherBinding? = null
-    private val binding get() = _binding!!
+    val binding get() = _binding!!
 
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    lateinit var fusedLocationClient: FusedLocationProviderClient
+
+    @Inject lateinit var sharedPreferences: SharedPreferences
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
@@ -45,10 +51,56 @@ class CurrentWeatherFragment : Fragment() {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         checkNetwork()
+
+        weatherViewModel.weatherIcon.observe(viewLifecycleOwner) { url ->
+            updateWeatherIcon(url)
+        }
+        binding.logout.setOnClickListener{
+            logout()
+        }
         return binding.root
     }
 
-    private fun checkNetwork() {
+
+    private fun logout() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(resources.getString(R.string.logout))
+        builder.setMessage(resources.getString(R.string.do_you_logout))
+        builder.setPositiveButton(resources.getString(R.string.yes)) { dialog, which ->
+           clearData()
+           dialog.dismiss()
+        }
+        builder.setNegativeButton(resources.getString(R.string.no)) { dialog, which ->
+            dialog.dismiss()
+        }
+        builder.create().show()
+    }
+
+    private fun clearData() {
+        weatherViewModel.deleteWeatherTable()
+        clearSharedPreferences()
+        navigateToLogin()
+    }
+
+    private fun navigateToLogin() {
+        findNavController().navigate(R.id.action_currentWeatherFragment_to_loginFragment)
+    }
+
+    private fun clearSharedPreferences() {
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
+
+    }
+
+    fun updateWeatherIcon(url: String) {
+        Glide.with(this)
+            .load(url)
+            .placeholder(R.drawable.sun) // Optional placeholder
+            .into(binding.imageWeatherIcon)
+    }
+
+    fun checkNetwork() {
         if (!isNetworkAvailable(requireContext())) {
             binding.offlineView.visibility = View.VISIBLE
             binding.contentView.visibility = View.GONE
@@ -68,7 +120,7 @@ class CurrentWeatherFragment : Fragment() {
         getCurrentLocation()
     }
 
-    private fun getCurrentLocation() {
+    fun getCurrentLocation() {
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION

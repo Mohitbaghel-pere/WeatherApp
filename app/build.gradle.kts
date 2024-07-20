@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.hilt.common)
+    implementation(libs.androidx.fragment.testing)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -88,31 +89,62 @@ dependencies {
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1")
 
-    // Glide for image loading
-    implementation ("com.github.bumptech.glide:glide:4.12.0")
-    kapt ("com.github.bumptech.glide:compiler:4.12.0")
+//    // Glide for image loading
+//    implementation ("com.github.bumptech.glide:glide:4.12.0")
+//    kapt ("com.github.bumptech.glide:compiler:4.12.0")
 
     // Location
     implementation ("com.google.android.gms:play-services-location:18.0.0")
 
+    // glide
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    kapt ("com.github.bumptech.glide:compiler:4.15.1")
+
     // SQLCipher for Android
 //    implementation ("net.zetetic:android-database-sqlcipher:5.0.0")
-
+//
     implementation ("androidx.security:security-crypto:1.1.0-alpha03")
 
-    val mockitoVersion = "4.8.0"
-    val mockitoKotlinVersion = "4.1.0"
-    val mockkVersion = "1.13.5"
-    val coroutines_version = "1.6.4"
 
-    // Optional -- Mockito framework
-    testImplementation ("org.mockito:mockito-core:$mockitoVersion")
-    // Optional -- mockito-kotlin
-    testImplementation ("org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion")
-    // Optional -- Mockk framework
-    testImplementation ("io.mockk:mockk:$mockkVersion")
+    // Local unit tests
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1")
+    testImplementation ("com.google.truth:truth:1.1.3")
+    testImplementation ("com.squareup.okhttp3:mockwebserver:4.9.1")
+    testImplementation ("org.amshove.kluent:kluent-android:1.73")
 
-    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version")
+
+    //Testing
+    androidTestImplementation ("androidx.arch.core:core-testing:2.1.0")
+
+    androidTestImplementation ("androidx.test:runner:1.4.0")
+
+    androidTestImplementation ("androidx.test:rules:1.4.0")
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
+
+    testImplementation ("junit:junit:4.+")
+    testImplementation ("io.mockk:mockk:1.12.2")
+    testImplementation ("org.mockito:mockito-core:3.12.4")
+    androidTestImplementation ("io.mockk:mockk-android:1.12.2")
+
+    androidTestImplementation("org.mockito:mockito-android:3.12.4") {
+        exclude(group = "net.bytebuddy", module = "byte-buddy")
+    }
+
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
+
+    testImplementation ("org.robolectric:robolectric:4.6.1")
+    testImplementation ("androidx.test:core:1.4.0")
+    testImplementation ("androidx.test.ext:junit:1.1.3")
+
+    androidTestImplementation ("com.google.dagger:hilt-android-testing:2.44")
+    kaptAndroidTest ("com.google.dagger:hilt-android-compiler:2.44")
+    testImplementation ("com.google.dagger:hilt-android-testing:2.44")
+    kaptTest ("com.google.dagger:hilt-android-compiler:2.44")
+
+//    implementation ("net.zetetic:sqlcipher-android:4.5.4@aar")
+//    implementation ("androidx.sqlite:sqlite:2.4.0")
 
 
 

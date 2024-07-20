@@ -25,6 +25,10 @@ class WeatherRepository @Inject constructor(
         return weatherApi.getWeather(lat, lng)
     }
 
+    suspend fun deleteAllWeather() {
+        weatherDao.deleteAllWeather()
+    }
+
 
 
 }

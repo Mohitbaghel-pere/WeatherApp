@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.system.weatherapp.R
 import com.system.weatherapp.data.repository.UserRepository
 import com.system.weatherapp.utils.Constants
-import com.system.weatherapp.utils.Utils.Companion.isValidEmail
+import com.system.weatherapp.utils.Utils.isValidEmail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
