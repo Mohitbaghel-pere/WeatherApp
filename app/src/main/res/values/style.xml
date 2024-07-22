@@ -9,14 +9,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-<!--    &lt;!&ndash; Theme for testing &ndash;&gt;-->
-<!--    <style name="Theme_MaterialComponents" parent="Theme.MaterialComponents.DayNight.DarkActionBar">-->
-<!--        &lt;!&ndash; Customize your theme for testing here &ndash;&gt;-->
-<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
-<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-<!--        <item name="colorAccent">@color/colorAccent</item>-->
-<!--    </style>-->
-
     <!-- Custom styles -->
     <style name="WeatherTextStyle">
         <item name="android:textColor">@android:color/white</item>

@@ -2,14 +2,11 @@ package com.system.weatherapp.ui.viewmodel
 
 import android.content.SharedPreferences
 import androidx.lifecycle.*
-import com.bumptech.glide.Glide
-import com.system.weatherapp.R
 import com.system.weatherapp.data.models.WeatherResponse
 import com.system.weatherapp.data.repository.WeatherRepository
 import com.system.weatherapp.utils.Constants
 import com.system.weatherapp.utils.mapApiResponseToEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -70,7 +67,7 @@ class WeatherViewModel @Inject constructor(
                 val weatherHistoryData = weatherRepository.getWeatherHistory()
                 _weatherHistory.value = weatherHistoryData
             } catch (e: Exception) {
-                // Handle error
+                e.printStackTrace()
             } finally {
                 _loading.value = false
             }
@@ -84,7 +81,7 @@ class WeatherViewModel @Inject constructor(
                 weatherRepository.deleteAllWeather()
                 _weatherHistory.value = emptyList()
             } catch (e: Exception) {
-                // Handle error
+              e.printStackTrace()
             } finally {
                 _loading.value = false
             }

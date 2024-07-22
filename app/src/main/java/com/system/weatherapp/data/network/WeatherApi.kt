@@ -2,7 +2,6 @@ package com.system.weatherapp.data.network
 
 import com.system.weatherapp.BuildConfig
 import com.system.weatherapp.data.models.WeatherApiData
-import com.system.weatherapp.data.models.WeatherResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

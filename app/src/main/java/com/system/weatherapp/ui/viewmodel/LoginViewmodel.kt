@@ -1,6 +1,6 @@
 package com.system.weatherapp.ui.viewmodel
 
-import android.content.Context
+
 import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +11,6 @@ import com.system.weatherapp.data.repository.UserRepository
 import com.system.weatherapp.utils.Constants
 import com.system.weatherapp.utils.Utils.isValidEmail
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

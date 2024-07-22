@@ -22,7 +22,6 @@ import com.google.android.gms.location.LocationServices
 import com.system.weatherapp.R
 import com.system.weatherapp.databinding.FragmentCurrentWeatherBinding
 import com.system.weatherapp.ui.viewmodel.WeatherViewModel
-import com.system.weatherapp.utils.Constants
 import com.system.weatherapp.utils.Utils.isNetworkAvailable
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -119,11 +118,6 @@ class CurrentWeatherFragment : Fragment() {
             return
         }
         getCurrentLocation()
-//        if (!isWeatherFetched()) {
-//            getCurrentLocation()
-//        } else{
-//            weatherViewModel.fetchCurrentWeather()
-//        }
     }
 
     fun getCurrentLocation() {
@@ -146,7 +140,6 @@ class CurrentWeatherFragment : Fragment() {
 
     private fun fetchWeather(latitude: Double, longitude: Double) {
         weatherViewModel.fetchWeather(latitude, longitude)
-//        setWeatherFetched()
     }
 
     override fun onRequestPermissionsResult(
@@ -165,13 +158,6 @@ class CurrentWeatherFragment : Fragment() {
                 }
             }
         }
-    }
-    private fun isWeatherFetched(): Boolean {
-        return sharedPreferences.getBoolean(Constants.WEATHER_FETCHED_FLAG, false)
-    }
-
-    private fun setWeatherFetched() {
-        sharedPreferences.edit().putBoolean(Constants.WEATHER_FETCHED_FLAG, true).apply()
     }
 
 
