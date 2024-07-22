@@ -27,6 +27,14 @@ WeatherApp is an Android application built using Kotlin and designed with MVVM C
 - SqlCipher
 - LiveData
 - ViewModel
+  
+## NOTE
+You need to use your own OpenWeather API Key at below mentioned path
+build.gradle -> defaultConfig -> OPEN_WEATHER_API_KEY
+
+## NOTE
+Also update the Pass Code for Database encrpytion at below mentioned path
+build.gradle -> defaultConfig -> PASS_CODE
 
 ## Unit Test
 This repository provides a comprehensive unit testing setup for Android applications using JUnit, Mockito. The testing framework is designed to ensure the reliability, correctness, and maintainability of the application codebase.
