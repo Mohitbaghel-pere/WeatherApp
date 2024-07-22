@@ -37,7 +37,9 @@ This repository provides a comprehensive unit testing setup for Android applicat
 
 ### Unit test results
 Unit test results covers above 95% of code coverage.
-- <img src="screenshots/unittest.png" alt="Screenshot 5" width="400"/>
+
+![Screenshot 2024-07-22 at 2 18 37 PM](https://github.com/user-attachments/assets/485d6e84-bf82-4066-8c52-d09d411ea330)
+
 
 ## Project Structure
 The project is organized into the following directories:
@@ -117,3 +119,28 @@ To enhance the security of our application, we utilize [ProGuard](https://www.gu
 
 
 This structure ensures a clean separation of concerns, making the codebase modular, maintainable, and scalable. Each directory and subdirectory is designed to house components specific to a particular aspect of the application, facilitating easier development and testing
+
+#### - App screens
+
+![Screenshot_20240722_142302](https://github.com/user-attachments/assets/887711a0-29d6-43e0-afea-22c2588bb610)
+
+![Screenshot_20240722_142124](https://github.com/user-attachments/assets/5469e579-5a1c-4b5d-a6d5-9ba3a480765f)
+
+![Screenshot_20240722_142149](https://github.com/user-attachments/assets/9a9e842a-69f0-4544-b8b0-36fdc5b8ab48)
+
+![Screenshot 2024-07-22 at 2 25 17 PM](https://github.com/user-attachments/assets/2e40b6aa-8707-433b-9fb4-24f9c6f8a1f6)
+
+<img width="363" alt="Screenshot 2024-07-22 at 2 26 30 PM" src="https://github.com/user-attachments/assets/71ac3b66-2a83-402a-83c8-0b0b3ce82979">
+
+### - Contributing
+Being only contributor I have put all code in main branch directly.
+Feel free to contribute to the WeatherApp project by opening issues, providing feedback, or submitting pull requests. Your contributions are highly appreciated.
+
+
+
+
+
+
+
+
+
