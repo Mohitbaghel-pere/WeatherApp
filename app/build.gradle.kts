@@ -17,8 +17,8 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-        buildConfigField ("String", "PASS_CODE", "\"${"passCode"}\"")
-        buildConfigField ("String", "OPEN_WEATHER_API_KEY", "\"${"48a68b91f23e976a9078e42ad0cea974"}\"")
+        buildConfigField ("String", "PASS_CODE", "\"${""}\"")
+        buildConfigField ("String", "OPEN_WEATHER_API_KEY", "\"${""}\"")
         buildConfigField("String", "BASE_URL", "\"https://api.openweathermap.org/data/2.5/\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -110,7 +110,7 @@ dependencies {
     implementation ("androidx.sqlite:sqlite:2.2.0")
     implementation ("androidx.sqlite:sqlite-framework:2.2.0")
 
-    
+
     implementation ("androidx.security:security-crypto:1.1.0-alpha03")
 
 
