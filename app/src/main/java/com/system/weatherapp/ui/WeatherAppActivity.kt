@@ -46,4 +46,13 @@ class WeatherAppActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onBackPressed() {
+        val navController = findNavController(R.id.nav_host_fragment)
+        if (navController.currentDestination?.id == R.id.currentWeatherFragment) {
+            finish()
+        } else {
+            super.onBackPressed()
+        }
+    }
 }

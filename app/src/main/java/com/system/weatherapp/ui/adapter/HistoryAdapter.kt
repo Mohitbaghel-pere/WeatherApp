@@ -31,7 +31,7 @@ class HistoryAdapter : ListAdapter<WeatherResponse, HistoryAdapter.HistoryViewHo
             binding.executePendingBindings()
             Glide.with(binding.root.context)
                 .load(weatherResponse.weatherIcon)
-                .placeholder(R.drawable.sun) // Optional placeholder
+                .placeholder(R.drawable.sun)
                 .into( binding.imageWeatherIconHistory)
         }
     }

@@ -51,7 +51,7 @@ class WeatherDaoTest {
         )
         weatherDao.insertWeather(weatherResponse)
 
-        val retrievedWeather = weatherDao.getWeather()
+        val retrievedWeather = weatherDao.getCurrentWeatherFromDb()
         assertNotNull(retrievedWeather)
         assertEquals(weatherResponse.tempCelsius, retrievedWeather?.tempCelsius)
         assertEquals(weatherResponse.city, retrievedWeather?.city)

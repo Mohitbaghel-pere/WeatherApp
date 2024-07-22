@@ -20,11 +20,7 @@ object Utils {
             val network = connectivityManager.activeNetwork ?: return false
             val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
             return activeNetwork.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-
-
         }
-
-
         fun isValidLength(length: Int): Boolean {
             return length >= 4
         }

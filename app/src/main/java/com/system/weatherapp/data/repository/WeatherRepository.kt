@@ -21,6 +21,10 @@ class WeatherRepository @Inject constructor(
         return weatherDao.getWeatherHistory()
     }
 
+//    suspend fun getCurrentWeatherFromDb(): WeatherResponse? {
+//        return weatherDao.getCurrentWeatherFromDb()
+//    }
+
     suspend fun getCurrentWeather(lat : Double, lng : Double) : WeatherApiData{
         return weatherApi.getWeather(lat, lng)
     }

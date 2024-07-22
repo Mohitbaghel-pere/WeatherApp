@@ -14,7 +14,7 @@ interface WeatherDao {
     suspend fun insertWeather(weatherResponse: WeatherResponse)
 
     @Query("SELECT * FROM weather LIMIT 1")
-    suspend fun getWeather(): WeatherResponse?
+    suspend fun getCurrentWeatherFromDb(): WeatherResponse?
 
     @Query("SELECT * FROM weather ORDER BY time DESC")
     suspend fun getWeatherHistory(): List<WeatherResponse>

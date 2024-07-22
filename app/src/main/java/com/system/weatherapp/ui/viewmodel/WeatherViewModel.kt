@@ -45,19 +45,22 @@ class WeatherViewModel @Inject constructor(
     fun fetchWeather(latitude: Double, longitude: Double) {
         viewModelScope.launch {
             val weatherdata = weatherRepository.getCurrentWeather(latitude, longitude)
-
             val weatherResponse = mapApiResponseToEntity((weatherdata))
             weatherRepository.insertWeather(weatherResponse)
+            setWeatherUi(weatherResponse)
 
-            name.value =Constants.hii +sharedPreferences.getString(Constants.name,"")
-            cityCountry.value = "${weatherResponse.city}, ${weatherResponse.country}"
-            currentTemperature.value = "${weatherResponse.tempCelsius} °C"
-            time.value = weatherResponse.time
-            sunrise.value = Constants.sunrise + weatherResponse.sunriseTime
-            sunset.value = Constants.sunset  + weatherResponse.sunsetTime
-            weatherIcon.value = weatherResponse.weatherIcon
 
         }
+    }
+
+    private fun setWeatherUi(weatherResponse: WeatherResponse) {
+        name.value =Constants.hii +sharedPreferences.getString(Constants.name,"")
+        cityCountry.value = "${weatherResponse.city}, ${weatherResponse.country}"
+        currentTemperature.value = "${weatherResponse.tempCelsius} °C"
+        time.value = weatherResponse.time
+        sunrise.value = Constants.sunrise + weatherResponse.sunriseTime
+        sunset.value = Constants.sunset  + weatherResponse.sunsetTime
+        weatherIcon.value = weatherResponse.weatherIcon
     }
 
     fun fetchWeatherHistory() {

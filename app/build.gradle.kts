@@ -89,10 +89,6 @@ dependencies {
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1")
 
-//    // Glide for image loading
-//    implementation ("com.github.bumptech.glide:glide:4.12.0")
-//    kapt ("com.github.bumptech.glide:compiler:4.12.0")
-
     // Location
     implementation ("com.google.android.gms:play-services-location:18.0.0")
 
@@ -100,9 +96,21 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.15.1")
     kapt ("com.github.bumptech.glide:compiler:4.15.1")
 
+//    implementation ("net.zetetic:sqlcipher-android:4.5.4@aar")
+//    implementation ("androidx.sqlite:sqlite:2.4.0")
     // SQLCipher for Android
-//    implementation ("net.zetetic:android-database-sqlcipher:5.0.0")
-//
+//    implementation ("net.zetetic:android-database-sqlcipher:4.5.3")
+//    implementation (libs.androidx.sqlite)
+
+
+    // SQLCipher for Android
+    implementation ("net.zetetic:android-database-sqlcipher:4.5.0")
+
+    // SQLite framework to work with SQLCipher
+    implementation ("androidx.sqlite:sqlite:2.2.0")
+    implementation ("androidx.sqlite:sqlite-framework:2.2.0")
+
+    
     implementation ("androidx.security:security-crypto:1.1.0-alpha03")
 
 
@@ -142,11 +150,6 @@ dependencies {
     kaptAndroidTest ("com.google.dagger:hilt-android-compiler:2.44")
     testImplementation ("com.google.dagger:hilt-android-testing:2.44")
     kaptTest ("com.google.dagger:hilt-android-compiler:2.44")
-
-//    implementation ("net.zetetic:sqlcipher-android:4.5.4@aar")
-//    implementation ("androidx.sqlite:sqlite:2.4.0")
-
-
 
 }
 
