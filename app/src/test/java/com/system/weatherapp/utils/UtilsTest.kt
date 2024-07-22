@@ -37,6 +37,11 @@ class UtilsTest {
     }
 
     @Test
+    fun `isValidEmail returns false for empty email`() {
+        assertFalse(Utils.isValidEmail(""))
+    }
+
+    @Test
     fun `isValidEmail returns false for invalid email`() {
         assertFalse(Utils.isValidEmail("invalid-email"))
     }
