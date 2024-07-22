@@ -69,7 +69,7 @@ class LoginViewModelTest {
     fun `login with valid credentials updates loginState with Success`() = coroutineRule.testDispatcher.runBlockingTest {
         val email = "valid@example.com"
         val password = "password"
-        val user = User(name = "John Doe", email = email, password = password)
+        val user = User(name = "Mohit Baghel", email = email, password = password)
 
         coEvery { userRepository.getUserbyEmail(email) } returns user
 
@@ -102,7 +102,7 @@ class LoginViewModelTest {
     fun `login with valid email and wrong password updates loginState with Error`() = coroutineRule.testDispatcher.runBlockingTest {
         val email = "valid@example.com"
         val password = "wrongpassword"
-        val user = User(name = "John Doe", email = email, password = "correctpassword")
+        val user = User(name = "Mohit Baghel", email = email, password = "correctpassword")
 
         coEvery { userRepository.getUserbyEmail(email) } returns user
 

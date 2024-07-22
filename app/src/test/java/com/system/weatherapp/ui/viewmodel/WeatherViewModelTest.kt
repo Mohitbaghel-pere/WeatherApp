@@ -68,14 +68,14 @@ class WeatherViewModelTest {
 
         coEvery { weatherRepository.getCurrentWeather(latitude, longitude) } returns apiResponse
         coEvery { weatherRepository.insertWeather(weatherResponse) } just Runs
-        every { sharedPreferences.getString(Constants.name, "") } returns "John Doe"
+        every { sharedPreferences.getString(Constants.name, "") } returns "Mohit Baghel"
 
         // Act
         weatherViewModel.fetchWeather(latitude, longitude)
 
         // Assert
         advanceUntilIdle() // Ensure all coroutines have completed
-        Assert.assertEquals("Hii, John Doe", weatherViewModel.name.value)
+        Assert.assertEquals("Hii, Mohit Baghel", weatherViewModel.name.value)
         Assert.assertEquals("Test City, US", weatherViewModel.cityCountry.value)
         Assert.assertEquals("${weatherResponse.tempCelsius} °C", weatherViewModel.currentTemperature.value)
         Assert.assertEquals(weatherResponse.time, weatherViewModel.time.value)

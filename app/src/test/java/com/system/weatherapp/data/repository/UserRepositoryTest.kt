@@ -32,7 +32,7 @@ class UserRepositoryTest {
     @Test
     fun `insertUser should insert user data into the database`() = runTest {
         // Arrange
-        val user = User(name = "John Doe", email = "john@example.com", password = "password")
+        val user = User(name = "Mohit", email = "mohit@gmail.com", password = "password")
         coEvery { userDao.insertUser(user) } returns Unit
 
         // Act
@@ -45,8 +45,8 @@ class UserRepositoryTest {
     @Test
     fun `getUserbyEmail should return user data from the database`() = runTest {
         // Arrange
-        val user = User(name = "John Doe", email = "john@example.com", password = "password")
-        val email = "john@example.com"
+        val user = User(name = "mohit", email = "mohit@gmail.com", password = "password")
+        val email = "mohit@gmail.com"
         coEvery { userDao.getUserByEmail(email) } returns user
 
         // Act
